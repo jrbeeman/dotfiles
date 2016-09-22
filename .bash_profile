@@ -37,7 +37,7 @@ fi
 
 # Include Drush rc file (if present).
 if [ -f ~/.drush_bashrc ] ; then
-	. ~/.drush_bashrc
+  . ~/.drush_bashrc
 fi
 
 #
@@ -48,7 +48,7 @@ fi
 alias flush-dns='sudo killall -HUP mDNSResponder'
 
 function homestead() {
-    ( cd ~/Homestead && vagrant $* )
+  ( cd ~/Homestead && vagrant $* )
 }
 
 function blt() {

@@ -7,9 +7,6 @@
 # @author Jeff Beeman
 #
 
-# Custom $PATH with extra locations.
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/usr/local/git/bin:$HOME/.composer/vendor/bin:$PATH
-
 # Setup various environment variables.
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 export PHP_ID="php5_6"
@@ -18,9 +15,9 @@ export DRUSH_PHP="/Applications/DevDesktop/$PHP_ID/bin/php"
 export DEVDESKTOP_DRUPAL_SETTINGS_DIR="$HOME/.acquia/DevDesktop/DrupalSettings"
 
 # Path setup broken out for readability.
-export PATH=$PHP_PATH:/usr/local/bin:~/bin:$PATH
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-export PATH="/Applications/DevDesktop/$PHP_ID/bin:/Applications/DevDesktop/mysql/bin:$PATH"
+export PATH="$PHP_PATH:/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:~/bin"
+export PATH="$PATH:/Applications/DevDesktop/mysql/bin"
 export PATH="$PATH:/Applications/DevDesktop/drush"
 
 # Include alias file (if present) containing aliases for ssh, etc.

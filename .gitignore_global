@@ -1,0 +1,8 @@
+*~
+.DS_Store
+sites/default/settings.php
+xhprof
+.idea
+*.LSOverride
+Thumbs.db
+.bundle

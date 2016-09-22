@@ -1,0 +1,133 @@
+[core]
+	excludesfile = ~/.gitignore_global
+  editor = vi
+
+[user]
+	name = Jeff Beeman
+	email = jeff@jeffbeeman.com
+
+[diff]
+	tool = vimdiff
+  memonicprefix = true
+
+[difftool]
+	prompt = false
+
+[color]
+	ui = true
+  branch = auto
+  diff = auto
+  status = auto
+  interactive = auto
+
+[color "branch"]
+  current = red reverse
+  local = blue
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[apply]
+  whitespace = nowarn
+
+[status]
+	;relativePaths = false
+	showUntrackedFiles = all
+
+[web]
+  browser = google-chrome
+
+[credential]
+  helper = osxkeychain
+
+[push]
+  default = simple
+
+[merge]
+	renameLimit = 10000
+
+[alias]
+  d = difftool
+  info = !$HOME/bin/git-info
+  pager = !$HOME/bin/git-pager
+  upstream-diff = "!sh -c 'git log $0 --not --remotes=upstream --full-diff --no-merges --pretty=fuller --patch -m --reverse'"
+  log-branch-short = "!sh -c 'git log $0 --not --remotes=upstream --no-merges --pretty=oneline'"
+  whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=
+  diff-short = diff --name-status
+  branch-unmerged = branch -lv --no-merge
+  branch-unmerged-remote = branch -lrv --no-merge
+
+  ; Source: https://github.com/durdn/cfg/blob/master/.gitconfig
+  st = status -s
+
+  cl = clone
+
+  ci = commit
+  cm = commit -m
+  cma = commit -a -m
+  ca = commit --amend
+  amend = commit --amend
+  caa = commit -a --amend -C HEAD
+  filelog = log -u
+  fl = log -u
+
+  ai = add --interactive
+
+  co = checkout
+  cob = checkout -b
+  br = branch
+  #"!git branch -ra | grep -v done"
+  branch = branch -ra
+
+  #list commands
+  le = log --oneline --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ls1 = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  lds = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+  ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  lc  = "!f() { git ll "$1"^.."$1"; }; f"
+  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+  #list all aliases
+  la = "!git config -l | grep alias | cut -c 7-"
+  diff = diff --word-diff
+  d = diff --word-diff
+  dc = diff --cached
+  #list modified files in last commit
+  dl = "!git ll -1"
+  #diff last commit
+  dlc = diff --cached HEAD^
+  dr  = "!f() { git diff -w "$1"^.."$1"; }; f"
+  diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+
+  #stash
+  sl = stash list
+  sa = stash apply
+  ss = stash save
+
+  # awk from root folder
+  awk = awk -i
+  awka = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git awk -i $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+
+  #grep on filename
+  f = "!git ls-files | grep -i"
+
+  #list remotes
+  remotes = "!git config -l | grep remote.*url | tail -n +2"
+
+  #subtree add
+  sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+
+  # Source: http://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
+  lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  lg = !"git lg1"

@@ -9,7 +9,7 @@
 
 # Setup various environment variables.
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
-export PHP_ID="php5_6"
+export PHP_ID="php7_0"
 export PHP_PATH="/Applications/DevDesktop/$PHP_ID/bin"
 export DRUSH_PHP="/Applications/DevDesktop/$PHP_ID/bin/php"
 export DEVDESKTOP_DRUPAL_SETTINGS_DIR="$HOME/.acquia/DevDesktop/DrupalSettings"
@@ -43,6 +43,9 @@ fi
 
 # Flush DNS cache (See: http://support.apple.com/kb/ht5343).
 alias flush-dns='sudo killall -HUP mDNSResponder'
+
+# Restart core audio
+alias restart-audio='sudo killall coreaudiod'
 
 function homestead() {
   ( cd ~/Homestead && vagrant $* )

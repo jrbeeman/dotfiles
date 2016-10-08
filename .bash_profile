@@ -17,6 +17,7 @@ export DEVDESKTOP_DRUPAL_SETTINGS_DIR="$HOME/.acquia/DevDesktop/DrupalSettings"
 # Path setup broken out for readability.
 export PATH="$PHP_PATH:/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH"
 export PATH="$PATH:/usr/local/bin:/usr/local/sbin:~/bin"
+export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:/Applications/DevDesktop/mysql/bin"
 export PATH="$PATH:/Applications/DevDesktop/drush"
 

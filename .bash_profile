@@ -96,6 +96,11 @@ function update-package-managers() {
   echo "----------------------------------------------"
 }
 
+# Fix permissions in /usr/local
+function fix-usr-permissions() {
+  sudo chown -R $(whoami) /usr/local
+}
+
 # Turn on bash autocomplete.
 brew_prefix=`brew --prefix`
 if [ -f $brew_prefix/etc/bash_completion ]; then

@@ -48,10 +48,17 @@ alias flush-dns='sudo killall -HUP mDNSResponder'
 # Restart core audio
 alias restart-audio='sudo killall coreaudiod'
 
+# Reload Bash profile.
+function rebash() {
+  source ~/.bash_profile
+}
+
+# Homestead wrapper
 function homestead() {
   ( cd ~/Homestead && vagrant $* )
 }
 
+# BLT wrapper.
 function blt() {
   if [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
     GIT_ROOT=$(git rev-parse --show-cdup)
@@ -64,6 +71,29 @@ function blt() {
   else
     echo "You must run this command from within a BLT-generated project repository."
   fi
+}
+
+# Utility for managing updates to Homebrew, Node, NPM, Composer.
+function update-package-managers() {
+  echo "----------------------------------------------"
+  echo "Updating Homebrew"
+  echo "----------------------------------------------"
+  brew update
+  brew upgrade
+  brew cleanup
+  echo "----------------------------------------------"
+  echo "Updating Node and NPM global packages"
+  echo "----------------------------------------------"
+  n latest
+  npm --global update
+  echo "----------------------------------------------"
+  echo "Updating Composer and global packages"
+  echo "----------------------------------------------"
+  composer self-update
+  composer global update
+  echo "----------------------------------------------"
+  echo "Done!"
+  echo "----------------------------------------------"
 }
 
 # Turn on bash autocomplete.

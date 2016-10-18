@@ -1,20 +1,20 @@
 [core]
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
   editor = vi
 
 [user]
-	name = Jeff Beeman
-	email = jeff@jeffbeeman.com
+  name = Jeff Beeman
+  email = jeff@jeffbeeman.com
 
 [diff]
-	tool = vimdiff
+  tool = vimdiff
   memonicprefix = true
 
 [difftool]
-	prompt = false
+  prompt = false
 
 [color]
-	ui = true
+  ui = true
   branch = auto
   diff = auto
   status = auto
@@ -40,8 +40,8 @@
   whitespace = nowarn
 
 [status]
-	;relativePaths = false
-	showUntrackedFiles = all
+  ;relativePaths = false
+  showUntrackedFiles = all
 
 [web]
   browser = google-chrome
@@ -53,7 +53,7 @@
   default = simple
 
 [merge]
-	renameLimit = 10000
+  renameLimit = 10000
 
 [alias]
   d = difftool

@@ -115,24 +115,8 @@ fi
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-export PS1="☀️ \D{%I:%M %p}:\w $ "
-export GIT_PS1_SHOWDIRTYSTATE=true
-
-if [ "\$(type -t __git_ps1)" ]; then
-  PS1='\[\e[1;31m\]\w\[\e[m\]\[\e[0;32m\]\n$(__git_ps1 "(%s)")\[\e[m\]\$ '
-fi
-
-if [ "\$(type -t __git_ps1)" ] && [ "\$(type -t __drush_ps1)" ]; then
-  PS1='\[\e[1;31m\]\w\[\e[m\]\[\e[0;32m\]\n$(__git_ps1 "(%s)")\[\e[m\] \[\e[1;34m\]$(__drush_ps1 "[%s]")\[\e[m\] $ '
-fi
-
-gitprompt='$(__git_ps1 "(%s)")'
-
-# Override the default pwd display.
-prompt_pwd() {
-  local pwd_symbol="$"
-  local pwd_length=30
-  newPWD="${PWD/#$HOME/~}"
-  [ ${#newPWD} -gt ${pwd_length} ] && newPWD=${newPWD:0:12}${pwd_symbol}${newPWD:${#newPWD}-15}
-  echo $newPWD
-}
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWCOLORHINTS=true
+GIT_PS1_UNTRACKEDFILES=true
+PROMPT_COMMAND='__git_ps1 "\[\e[0;2m\]\w\[\e[m\]\[\e[0;32m\]" "\[\e[m\] $ "'

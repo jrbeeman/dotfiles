@@ -119,4 +119,7 @@ source /usr/local/etc/bash_completion.d/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWCOLORHINTS=true
 GIT_PS1_UNTRACKEDFILES=true
-PROMPT_COMMAND='__git_ps1 "\[\e[0;2m\]\w\n[\D{%F %T}]\[\e[m\]\[\e[0;32m\]" "\[\e[m\] $ "'
+# Prompt output looks like:
+#     [current path]
+#     [date] [git status] $
+PROMPT_COMMAND='__git_ps1 "\[\e[0;31m\]\w\n\[\e[0;2m\][\D{%F %T}]\[\e[m\]\[\e[0;32m\]" "\[\e[m\] $ "'

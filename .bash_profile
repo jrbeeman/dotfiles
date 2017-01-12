@@ -13,13 +13,7 @@ export PHP_ID="php7_0"
 export PHP_PATH="/Applications/DevDesktop/$PHP_ID/bin"
 export DRUSH_PHP="/Applications/DevDesktop/$PHP_ID/bin/php"
 export DEVDESKTOP_DRUPAL_SETTINGS_DIR="$HOME/.acquia/DevDesktop/DrupalSettings"
-
-# Path setup broken out for readability.
-export PATH="$PHP_PATH:/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH"
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:~/bin"
-export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH="$PATH:/Applications/DevDesktop/mysql/bin"
-export PATH="$PATH:/Applications/DevDesktop/drush"
+export PATH="$PHP_PATH:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.composer/vendor/bin:$PATH"
 
 # Include alias file (if present) containing aliases for ssh, etc.
 if [ -f ~/.bash_aliases ]

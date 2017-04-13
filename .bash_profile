@@ -61,10 +61,11 @@ function blt() {
     GIT_ROOT="."
   fi
 
-  if [ -f "$GIT_ROOT/vendor/acquia/blt/blt.sh" ]; then
-    $GIT_ROOT/vendor/acquia/blt/blt.sh "$@"
+  if [ -f "$GIT_ROOT/vendor/bin/blt" ]; then
+    $GIT_ROOT/vendor/bin/blt "$@"
   else
-    echo "Error: You must run this command from within a BLT-generated project repository!"
+    echo "You must run this command from within a BLT-generated project repository."
+    return 1
   fi
 }
 

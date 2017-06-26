@@ -80,7 +80,7 @@ function update-package-managers() {
   echo "----------------------------------------------"
   echo "Updating Node and NPM global packages"
   echo "----------------------------------------------"
-  n latest
+  n lts
   npm --global update
   echo "----------------------------------------------"
   echo "Updating Composer and global packages"

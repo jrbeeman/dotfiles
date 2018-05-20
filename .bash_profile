@@ -8,13 +8,14 @@
 #
 
 # Setup various environment variables.
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
-export PHP_ID="php7_0"
-export PHP_PATH="/Applications/DevDesktop/$PHP_ID/bin"
-export DRUSH_PHP="/Applications/DevDesktop/$PHP_ID/bin/php"
-export MYSQL_PATH="/Applications/DevDesktop/mysql/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.composer/vendor/bin:$PATH"
+
+# Add Dev Desktop settings and paths.
+# Does not add Dev Desktop's PHP path; PHP is installed via Homebrew.
 export DEVDESKTOP_DRUPAL_SETTINGS_DIR="$HOME/.acquia/DevDesktop/DrupalSettings"
-export PATH="$PHP_PATH:$MYSQL_PATH:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.composer/vendor/bin:$PATH"
+export PATH="/Applications/DevDesktop/mysql/bin:$PATH"
+export PATH="$PATH:/Applications/DevDesktop/tools"
+
 
 # Include alias file (if present) containing aliases for ssh, etc.
 if [ -f ~/.bash_aliases ]

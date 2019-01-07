@@ -62,10 +62,11 @@
   upstream-diff = "!sh -c 'git log $0 --not --remotes=upstream --full-diff --no-merges --pretty=fuller --patch -m --reverse'"
   log-branch-short = "!sh -c 'git log $0 --not --remotes=upstream --no-merges --pretty=oneline'"
   whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph
   diff-short = diff --name-status
   branch-unmerged = branch -lv --no-merge
   branch-unmerged-remote = branch -lrv --no-merge
+  weekly-log = !git --no-pager log --since='1 week' --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
   ; Source: https://github.com/durdn/cfg/blob/master/.gitconfig
   st = status -s

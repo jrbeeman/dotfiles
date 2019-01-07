@@ -12,8 +12,12 @@ export PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.composer/vendor/bin
 
 # Add Dev Desktop settings and paths.
 # Does not add Dev Desktop's PHP path; PHP is installed via Homebrew.
+export DD_PHP_ID="php7_1"
+export PHP_ID=$DD_PHP_ID
+export DRUSH_PHP="/Applications/DevDesktop/$DD_PHP_ID/bin/php"
+export MYSQL_PATH="/Applications/DevDesktop/mysql/bin"
 export DEVDESKTOP_DRUPAL_SETTINGS_DIR="$HOME/.acquia/DevDesktop/DrupalSettings"
-export PATH="/Applications/DevDesktop/mysql/bin:$PATH"
+export PATH="$PATH:$MYSQL_PATH"
 export PATH="$PATH:/Applications/DevDesktop/tools"
 
 
@@ -44,6 +48,9 @@ alias flush-dns='sudo killall -HUP mDNSResponder'
 # Restart core audio
 alias restart-audio='sudo killall coreaudiod'
 
+# Setup thefuck.
+eval $(thefuck --alias)
+
 # Reload Bash profile.
 function rebash() {
   source ~/.bash_profile
@@ -56,19 +63,27 @@ function homestead() {
 
 # BLT wrapper.
 function blt() {
-  if [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
-    GIT_ROOT=$(git rev-parse --show-cdup)
+  if [[ ! -z ${AH_SITE_ENVIRONMENT} ]]; then
+    PROJECT_ROOT="/var/www/html/${AH_SITE_GROUP}.${AH_SITE_ENVIRONMENT}"
+  elif [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
+    PROJECT_ROOT=$(git rev-parse --show-cdup)
   else
-    GIT_ROOT="."
+    PROJECT_ROOT="."
   fi
 
   if [ -f "$GIT_ROOT/vendor/bin/blt" ]; then
     $GIT_ROOT/vendor/bin/blt "$@"
+
+  # Check for local BLT.
+  elif [ -f "./vendor/bin/blt" ]; then
+    ./vendor/bin/blt "$@"
+
   else
-    echo "You must run this command from within a BLT-generated project repository."
+    echo "You must run this command from within a BLT-generated project."
     return 1
   fi
 }
+
 
 # Utility for managing updates to Homebrew, Node, NPM, Composer.
 function update-package-managers() {
